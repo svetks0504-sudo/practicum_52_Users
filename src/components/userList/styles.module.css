@@ -1,0 +1,14 @@
+.container{
+    margin: 5vw;
+}
+.li{
+    display: flex;
+    justify-content: flex-start;
+   align-items: center;
+    gap: 1vw;
+    font-size: 1.2rem;
+    margin-top: 2vw;
+}
+.button{
+   padding: 0.5vw;
+}

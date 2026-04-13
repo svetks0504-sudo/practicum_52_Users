@@ -1,29 +1,34 @@
 import { useDispatch, useSelector } from "react-redux";
-import { editUser, deleteUser } from "../../redux/slices/userSlice";
+import { deleteUser } from "../../redux/slices/userSlice";
+import styles from "./styles.module.css"
 
-function UserList() {
-  const users = useSelector((state) => state.users);
-  const dispstch = useDispatch();
+
+function UserList({ setEditingUser }) {
+  const users = useSelector((state) => state.user.users);
+  const dispatch = useDispatch();
 
   return (
-    <>
+    <div className={styles.container}>
       <h1>User List</h1>
       <ul>
         {users.map((user) => {
           return (
-            <li key={user.id}>
+            <li key={user.id}
+            className={styles.li}>
               <p>
                 {user.name}, {user.age}, {user.email}
               </p>
-              <button onClick={() => dispstch(editUser(user.id))}>Edit</button>
-              <button onClick={() => dispstch(deleteUser(user.id))}>
+              <button  className={styles.button}
+               onClick={() => setEditingUser(user)}>Edit</button>
+              <button className={styles.button}
+              onClick={() => dispatch(deleteUser(user.id))}>
                 Delete
               </button>
             </li>
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }
 

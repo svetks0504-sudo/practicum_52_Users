@@ -1,14 +1,17 @@
 import './App.css'
 import UserForm from './components/userForm'
 import UserList from './components/userList'
+import { useState } from 'react'
 
 function App() {
-
+const [editingUser, setEditingUser] = useState(null)
 
   return (
     <div>
-      <UserList />
-      <UserForm />
+      <UserList 
+       setEditingUser={setEditingUser}/>
+      <UserForm setEditingUser={setEditingUser}
+      editingUser={editingUser}/>
     </div>
   )
 }
